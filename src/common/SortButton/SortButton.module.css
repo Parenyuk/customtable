@@ -1,0 +1,15 @@
+.arrowUp{
+    width: 15px;
+    transform: rotate(180deg);
+    cursor: pointer;
+}
+.arrowDown{
+    width: 15px;
+    cursor: pointer;
+}
+
+.arrowContainer{
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+}

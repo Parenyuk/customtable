@@ -1,20 +1,40 @@
 
-table {
-    border: 3px solid grey;
-}
-thead {
-    border-bottom: 3px solid green;
-}
-thead tr {
-    border-bottom: 2px solid greenyellow;
+.table {
+    border-collapse: collapse;
+    border: 3px solid #ddd;
 }
 
-th {
-    padding: 5px;
+.table td,
+.table  th {
+    border: 1px solid #ddd;
+    padding: 12px;
+
 }
-.thContainer {
+
+.table th,
+.table td {
+    min-width: 150px;
+    max-width: 200px;
+}
+.table input {
+    max-width: 120px;
+    padding: 0 2px;
+}
+
+.table  tr:hover {
+    background-color: #ddd;
+}
+
+.table  th {
+    padding: 10px;
+    text-align: center;
+    background-color: grey;
+    color: white;
+}
+
+.titleBlock {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-
+    justify-content: center;
 }

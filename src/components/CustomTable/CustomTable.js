@@ -8,7 +8,7 @@ export const CustomTable = () => {
 
     return (
         <div>
-            <table>
+            <table className={'table'}>
                 <thead >
                 <TableHeader/>
                 </thead >
