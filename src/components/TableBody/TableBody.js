@@ -1,17 +1,25 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
-import classes from './TableBody.module.css'
-
 
 export const TableBody = () => {
 
+    let {tableItem, searchValue} = useSelector(state => state.tablePage);
+    const [data, setData] = useState(tableItem)
 
-    let tableI = useSelector(state => state.tablePage.tableItem);
+    console.log(searchValue)
 
-    debugger
+    useEffect(() => {
 
-    return tableI?.map((elem, index) => {
-        debugger
+        let filteredData = tableItem.filter(item => {
+
+           return searchValue.filterValue ? item[searchValue.headerName].toString().includes(searchValue.filterValue) : true
+        }  )
+
+        setData(filteredData)
+
+    }, [searchValue])
+
+    return data?.map((elem, index) => {
         return (
             <tr key={index}>
                 {Object.values(elem)?.map((item, index) => {
@@ -21,5 +29,4 @@ export const TableBody = () => {
         )
 
     })
-
 }

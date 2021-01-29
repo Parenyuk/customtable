@@ -28,7 +28,7 @@
 .table  th {
     padding: 10px;
     text-align: center;
-    background-color: grey;
+    background-color: #E5E5E5;
     color: white;
 }
 
@@ -37,4 +37,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+.title {
+    color: black;
+    font-weight: bold;
 }
