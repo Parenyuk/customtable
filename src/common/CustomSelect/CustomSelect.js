@@ -1,24 +1,25 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import classes from './CustomSelect.module.css';
-import {useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
+import {actions} from '../../redux/tableReducer';
 
+export const CustomSelect = ({renderOptions, filterValue, changeFilterValue, headerName}) => {
 
-export const CustomSelect = ({options}) => {
+    const dispatch = useDispatch();
 
-    let arrayOptions = Array.from(options, ({status})=> status)
+   const onSelectValue = (e) => {
+       let filterValue = e.currentTarget.value
+       let headName = headerName.toLowerCase()
+       dispatch(actions.SetFilterValue(filterValue, headName))
+   }
 
-    let uniqueOptions = Array.from(new Set(arrayOptions));
-
-
-    return (
-        <select name="1" id="" className={classes.select}>
-            {uniqueOptions.map((option, index) => {
-                return <option key={index} value={option}>{option}</option>
-            } )}
-            {/*<option value="">1</option>*/}
-            {/*<option value="">2</option>*/}
-            {/*<option value="">3</option>*/}
-
+   return (
+        <select name="1" id="" className={classes.select} onChange={onSelectValue} >
+            {
+                renderOptions.map((option, index) => {
+                    return <option key={index} value={option}>{option}</option>
+                } )
+            }
         </select>
     )
 }

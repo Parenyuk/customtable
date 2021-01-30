@@ -11,7 +11,6 @@ export const SortButton = ({titleForSort}) => {
     let dispatch = useDispatch()
 
     let onSortButtonClick = (direction) => {
-        // debugger
         dispatch(actions.SetSortParams(direction, titleForSort))
     }
 

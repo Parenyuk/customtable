@@ -1,6 +1,6 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
-import {CustomInput} from '../CustomInput/CustomInput';
+import {CustomInput} from '../../common/CustomInput/CustomInput';
 import './../CustomTable/CustomTable.css'
 import {SortButton} from '../../common/SortButton/SortButton';
 
@@ -9,11 +9,9 @@ export const TableHeader = () => {
     let headerTitleElement = useSelector(state => state.tablePage.tableTitle);
     let arrayTableData = useSelector(state => state.tablePage.tableItem)
 
-
     return Object.values(headerTitleElement).map((elem, index) => {
-
-            return <tr key={index}> {
-                Object.values(elem).map((item, index) => {
+            return <tr key={index}>
+                {Object.values(elem).map((item, index) => {
                     return (
                         <th key={index}>
                             <div>
@@ -21,7 +19,7 @@ export const TableHeader = () => {
                                     <div className={'title'}>{item.title}</div>
                                     <div><SortButton titleForSort={item.title?.toLowerCase()}/></div>
                                 </div>
-                                <div><CustomInput headerName={item.title} type={item.type} arrayTableData={arrayTableData}/>
+                                <div><CustomInput headerName={item.title} type={item.type} options={arrayTableData}/>
                                 </div>
                             </div>
                         </th>
