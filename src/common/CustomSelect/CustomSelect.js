@@ -3,7 +3,7 @@ import classes from './CustomSelect.module.css';
 import {useDispatch} from 'react-redux';
 import {actions} from '../../redux/tableReducer';
 
-export const CustomSelect = ({renderOptions, filterValue, changeFilterValue, headerName}) => {
+export const CustomSelect = ({renderOptions, headerName}) => {
 
     const dispatch = useDispatch();
 
