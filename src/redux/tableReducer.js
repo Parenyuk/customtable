@@ -5,6 +5,7 @@ const today = new Date().toDateString();
 
 const initialState = {
     searchValue: {filterValue: '', headerName: ''},
+    sortValue: {direction: '', titleForSort: ''},
     tableTitle: [
         {
             number: {type: 'number', title: 'Number'},
@@ -54,28 +55,32 @@ export const tableReducer = (state = initialState, action) => {
 
         case SET_SORT_PARAMS:
             return {
-                ...state, tableItem: state.tableItem.slice().sort((a, b) => {
-                    debugger
-                    if (action.direction === false) {
-                        if (a[action.titleForSort] < b[action.titleForSort]) {
-                            return -1;
-                        }
-                        if (a[action.titleForSort] > b[action.titleForSort]) {
-                            return 1;
-                        }
-                        return 0;
-                    } else if (action.direction === true) {
-                        if (a[action.titleForSort] > b[action.titleForSort]) {
-
-                            return -1;
-                        }
-                        if (a[action.titleForSort] < b[action.titleForSort]) {
-                            return 1;
-                        }
-                        return 0;
-                    }
-                })
+                ...state, sortValue: {direction: action.direction, titleForSort: action.titleForSort}
             }
+
+            // return {
+            //     ...state, tableItem: state.tableItem.slice().sort((a, b) => {
+            //         debugger
+            //         if (action.direction === false) {
+            //             if (a[action.titleForSort] < b[action.titleForSort]) {
+            //                 return -1;
+            //             }
+            //             if (a[action.titleForSort] > b[action.titleForSort]) {
+            //                 return 1;
+            //             }
+            //             return 0;
+            //         } else if (action.direction === true) {
+            //             if (a[action.titleForSort] > b[action.titleForSort]) {
+            //
+            //                 return -1;
+            //             }
+            //             if (a[action.titleForSort] < b[action.titleForSort]) {
+            //                 return 1;
+            //             }
+            //             return 0;
+            //         }
+            //     })
+            // }
         default:
             return state
     }
@@ -84,7 +89,7 @@ export const tableReducer = (state = initialState, action) => {
 
 export const actions = {
     SetSortParams: (direction, titleForSort) => {
-        debugger
+        // debugger
         return ({type: SET_SORT_PARAMS, direction, titleForSort})
     },
     SetFilterValue: (filterValue, headerName) => {

@@ -3,28 +3,50 @@ import {useSelector} from 'react-redux';
 
 export const TableBody = () => {
 
-    let {tableItem, searchValue} = useSelector(state => state.tablePage);
+    let {tableItem, searchValue, sortValue} = useSelector(state => state.tablePage);
     const [data, setData] = useState(tableItem)
 
-    console.log(searchValue)
+    console.log(sortValue)
 
     useEffect(() => {
 
-        let filteredData = tableItem.filter(item => {
+        let sortedData = tableItem.slice().sort((a, b) => {
+            debugger
+            if (sortValue.direction === false) {
+                if (a[sortValue.titleForSort] < b[sortValue.titleForSort]) {
+                    return -1;
+                }
+                if (a[sortValue.titleForSort] > b[sortValue.titleForSort]) {
+                    return 1;
+                }
+                return 0;
+            } else if (sortValue.direction === true) {
+                if (a[sortValue.titleForSort] > b[sortValue.titleForSort]) {
 
-           return searchValue.filterValue ? item[searchValue.headerName].toString().includes(searchValue.filterValue) : true
-        }  )
+                    return -1;
+                }
+                if (a[sortValue.titleForSort] < b[sortValue.titleForSort]) {
+                    return 1;
+                }
+                return 0;
+            }
+        })
+        debugger
+        let filteredData = sortedData.filter(item => {
 
+            return searchValue.filterValue ? item[searchValue.headerName].toString().includes(searchValue.filterValue) : true
+        })
+        // debugger
         setData(filteredData)
 
-    }, [searchValue])
+    }, [searchValue, sortValue])
 
     return data?.map((elem, index) => {
         return (
             <tr key={index}>
                 {Object.values(elem)?.map((item, index) => {
                     return <td key={index}>{item}</td>
-                }) }
+                })}
             </tr>
         )
 
