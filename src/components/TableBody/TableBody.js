@@ -6,8 +6,6 @@ export const TableBody = () => {
     let {tableItem, searchValue, sortValue} = useSelector(state => state.tablePage);
     const [data, setData] = useState(tableItem)
 
-    console.log(sortValue)
-
     useEffect(() => {
 
         let sortedData = tableItem.slice().sort((a, b) => {

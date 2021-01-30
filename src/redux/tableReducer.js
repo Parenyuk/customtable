@@ -62,12 +62,12 @@ export const tableReducer = (state = initialState, action) => {
     }
 }
 
-
 export const actions = {
     SetSortParams: (direction, titleForSort) => {
         return ({type: SET_SORT_PARAMS, direction, titleForSort})
     },
     SetFilterValue: (filterValue, headerName) => {
+        debugger
         return ({type: SET_FILTER_VALUE, filterValue, headerName})
     }
 }

@@ -1,31 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import classes from './CustomSelect.module.css';
+import {useDispatch} from 'react-redux';
+import {actions} from '../../redux/tableReducer';
 
-// export const CustomSelect = ({options}) => {
-//
-//     let arrayOptions = Array.from(options, ({status})=> status)
-//
-//     let uniqueOptions = Array.from(new Set(arrayOptions));
-//
-//     return (
-//         <select name="1" id="" className={classes.select}>
-//             {uniqueOptions.map((option, index) => {
-//                 return <option key={index} value={option}>{option}</option>
-//             } )}
-//             {/*<option value="">1</option>*/}
-//             {/*<option value="">2</option>*/}
-//             {/*<option value="">3</option>*/}
-//
-//         </select>
-//     )
-// }
-export const CustomSelect = ({renderOptions}) => {
+export const CustomSelect = ({renderOptions, filterValue, changeFilterValue, headerName}) => {
 
+    const dispatch = useDispatch();
 
-
+   const onSelectValue = (e) => {
+       let filterValue = e.currentTarget.value
+       let headName = headerName.toLowerCase()
+       dispatch(actions.SetFilterValue(filterValue, headName))
+   }
 
    return (
-        <select name="1" id="" className={classes.select}>
+        <select name="1" id="" className={classes.select} onChange={onSelectValue} >
             {
                 renderOptions.map((option, index) => {
                     return <option key={index} value={option}>{option}</option>
