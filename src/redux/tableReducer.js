@@ -14,8 +14,8 @@ const initialState = {
             actual: {type: 'number', title: 'Actual'},
             total: {type: 'number', title: 'Total'},
             type: {type: 'selector', title: 'Type'},
-            createData: {type: 'date', title: 'Createdata'},
-            closeData: {type: 'date', title: 'Closedata'},
+            createData: {type: 'date', title: 'Create data'},
+            closeData: {type: 'date', title: 'Close data'},
             country: {type: 'text', title: 'Country'}
         }
     ],
@@ -57,30 +57,6 @@ export const tableReducer = (state = initialState, action) => {
             return {
                 ...state, sortValue: {direction: action.direction, titleForSort: action.titleForSort}
             }
-
-            // return {
-            //     ...state, tableItem: state.tableItem.slice().sort((a, b) => {
-            //         debugger
-            //         if (action.direction === false) {
-            //             if (a[action.titleForSort] < b[action.titleForSort]) {
-            //                 return -1;
-            //             }
-            //             if (a[action.titleForSort] > b[action.titleForSort]) {
-            //                 return 1;
-            //             }
-            //             return 0;
-            //         } else if (action.direction === true) {
-            //             if (a[action.titleForSort] > b[action.titleForSort]) {
-            //
-            //                 return -1;
-            //             }
-            //             if (a[action.titleForSort] < b[action.titleForSort]) {
-            //                 return 1;
-            //             }
-            //             return 0;
-            //         }
-            //     })
-            // }
         default:
             return state
     }
@@ -89,7 +65,6 @@ export const tableReducer = (state = initialState, action) => {
 
 export const actions = {
     SetSortParams: (direction, titleForSort) => {
-        // debugger
         return ({type: SET_SORT_PARAMS, direction, titleForSort})
     },
     SetFilterValue: (filterValue, headerName) => {

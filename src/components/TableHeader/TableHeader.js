@@ -21,7 +21,7 @@ export const TableHeader = () => {
                                     <div className={'title'}>{item.title}</div>
                                     <div><SortButton titleForSort={item.title?.toLowerCase()}/></div>
                                 </div>
-                                <div><CustomInput headerName={item.title} type={item.type} arrayTableData={arrayTableData}/>
+                                <div><CustomInput headerName={item.title} type={item.type} options={arrayTableData}/>
                                 </div>
                             </div>
                         </th>

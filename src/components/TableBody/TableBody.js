@@ -11,7 +11,6 @@ export const TableBody = () => {
     useEffect(() => {
 
         let sortedData = tableItem.slice().sort((a, b) => {
-            debugger
             if (sortValue.direction === false) {
                 if (a[sortValue.titleForSort] < b[sortValue.titleForSort]) {
                     return -1;
@@ -31,12 +30,10 @@ export const TableBody = () => {
                 return 0;
             }
         })
-        debugger
         let filteredData = sortedData.filter(item => {
 
             return searchValue.filterValue ? item[searchValue.headerName].toString().includes(searchValue.filterValue) : true
         })
-        // debugger
         setData(filteredData)
 
     }, [searchValue, sortValue])
